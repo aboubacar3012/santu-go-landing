@@ -8,9 +8,9 @@ const WAITLIST_FORM_URL =
   "https://forms.gle/VqsV8zSW4dcMF16A7" as const;
 
 const LEGAL = {
-  mentions: "/mentions-legales",
-  privacy: "/confidentialite",
-  terms: "/cgu",
+  legalNotice: "/legal-notice",
+  privacy: "/privacy",
+  terms: "/terms",
 } as const;
 
 export default function Home() {
@@ -404,7 +404,7 @@ export default function Home() {
               <ul className="mt-4 space-y-2.5 text-sm">
                 <li>
                   <Link
-                    href={LEGAL.mentions}
+                    href={LEGAL.legalNotice}
                     className="text-zinc-400 transition-colors hover:text-santu-gold"
                   >
                     Mentions légales

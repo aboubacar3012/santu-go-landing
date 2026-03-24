@@ -4,17 +4,21 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
-export function SiteHeader() {
-  const [solid, setSolid] = useState(false);
+export function SiteHeader({ solidHeader = false }: { solidHeader?: boolean }) {
+  const [solid, setSolid] = useState(solidHeader);
 
   useEffect(() => {
+    if (solidHeader) {
+      setSolid(true);
+      return;
+    }
     const onScroll = () => setSolid(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [solidHeader]);
 
-  const onDarkHero = !solid;
+  const onHero = !solid;
 
   return (
     <header
@@ -39,7 +43,7 @@ export function SiteHeader() {
           className="flex items-center"
           aria-label="Navigation principale"
         >
-          <ThemeToggle navOnDarkHero={onDarkHero} />
+          <ThemeToggle onHero={onHero} />
         </nav>
       </div>
     </header>

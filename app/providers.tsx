@@ -16,10 +16,10 @@ const ThemeContext = createContext<{
   toggleTheme: () => void;
 } | null>(null);
 
-export function useSantuTheme() {
+export function useAppTheme() {
   const ctx = useContext(ThemeContext);
   if (!ctx) {
-    throw new Error("useSantuTheme must be used within ThemeProvider");
+    throw new Error("useAppTheme must be used within ThemeProvider");
   }
   return ctx;
 }
